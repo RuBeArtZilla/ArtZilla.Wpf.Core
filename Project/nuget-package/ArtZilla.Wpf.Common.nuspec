@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>ArtZilla.Wpf.Common</id>
+    <version>1.0.0.1</version>
+    <authors>Artyom Fomin (ArtZilla)</authors>
+    <description>Common library for WPF</description>
+    <language>en-US</language>
+    <licenseUrl>http://files.artzilla.name/ArtZilla.Wpf.Common/License.txt</licenseUrl>
+    <projectUrl>http://files.artzilla.name/ArtZilla.Wpf.Common/</projectUrl>
+    <iconUrl>http://files.artzilla.name/ArtZilla.Wpf.Common/Icon.png</iconUrl>
+    <copyright>Copyright (c) 2016-2017 Artyom Fomin</copyright>
+    <tags>ArtZilla</tags>
+    <dependencies>
+        <dependency id="ArtZilla.Sharp.Lib" version="1.0.9.3" />
+    </dependencies>
+  </metadata>
+</package>
