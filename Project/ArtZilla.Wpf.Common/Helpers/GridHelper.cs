@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using ArtZilla.Sharp.Lib.Extensions;
+using ArtZilla.Net.Core.Extensions;
 
 namespace ArtZilla.Wpf.Common.Helpers {
 	public class GridHelper {
