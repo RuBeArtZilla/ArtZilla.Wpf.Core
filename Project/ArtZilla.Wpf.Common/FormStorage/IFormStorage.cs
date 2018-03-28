@@ -171,8 +171,8 @@ namespace ArtZilla.Wpf.Common {
 					key = key?.CreateSubKey(ProductName);
 					key = key?.CreateSubKey(FormId);
 				}
-			} catch (Exception e) {
-				return null; //todo: Log there
+			} catch {
+				return null; // todo: Log there ?
 			}
 
 			return key;
