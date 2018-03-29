@@ -11,9 +11,9 @@
     <LangVersion>latest</LangVersion>
     <IncludeSymbols>true</IncludeSymbols>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Version>1.0.0.5</Version>
-    <FileVersion>1.0.0.5</FileVersion>
-    <AssemblyVersion>1.0.0.5</AssemblyVersion>
+    <Version>1.0.0.6</Version>
+    <FileVersion>1.0.0.6</FileVersion>
+    <AssemblyVersion>1.0.0.6</AssemblyVersion>
     <PackageReleaseNotes>Prepare for first release</PackageReleaseNotes>
     <Copyright>Copyright (c) 2016-2018 Artyom Fomin</Copyright>
     <PackageCopyright>Copyright (c) 2016-2018 Artyom Fomin</PackageCopyright>
@@ -32,23 +32,19 @@
     <RepositoryType>Github</RepositoryType>
     <Company>ArtZilla's development</Company>
     <RepositoryUrl>https://github.com/RuBeArtZilla/ArtZilla.Wpf.Common</RepositoryUrl>
-    <ApplicationIcon />
-    <StartupObject />
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <UpgradeBackupLocation>
-    </UpgradeBackupLocation>
-    <OldToolsVersion>14.0</OldToolsVersion>
   </PropertyGroup>
+	
   <!-- Configurations -->
   <PropertyGroup Condition="'$(Configuration)'=='Debug'">
     <DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
   </PropertyGroup>
+	
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
   </PropertyGroup>
+	
   <!-- References -->
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -56,11 +52,14 @@
     <Reference Include="System.Xaml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
+	
   <!-- PackageReferences -->
   <ItemGroup>
     <PackageReference Include="ArtZilla.Net.Core" Version="1.1.0.16" />
+    <PackageReference Include="MvvmLightLibs" Version="5.4.1" />
     <PackageReference Include="System.ValueTuple" Version="4.4.0" />
   </ItemGroup>
+	
   <!-- Files -->
   <ItemGroup>
     <!-- App.xaml -->

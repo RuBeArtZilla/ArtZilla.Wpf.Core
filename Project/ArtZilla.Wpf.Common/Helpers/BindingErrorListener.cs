@@ -1,18 +1,15 @@
 ﻿using System;
 using System.Diagnostics;
 
-namespace ArtZilla.Wpf.Common.Helpers {
+namespace ArtZilla.Wpf.Helpers {
 	public class BindingErrorListener : TraceListener {
-		private Action<String> logAction;
+		public static void Listen(Action<string> logAction)
+			=> PresentationTraceSources.DataBindingSource.Listeners.Add(new BindingErrorListener { _logAction = logAction });
 
-		public static void Listen(Action<String> logAction) {
-			PresentationTraceSources.DataBindingSource.Listeners.Add(new BindingErrorListener { logAction = logAction });
-		}
+		public override void Write(string message) { }
 
-		public override void Write(String message) { }
+		public override void WriteLine(string message) => _logAction(message);
 
-		public override void WriteLine(String message) {
-			logAction(message);
-		}
+		private Action<string> _logAction;
 	}
 }
