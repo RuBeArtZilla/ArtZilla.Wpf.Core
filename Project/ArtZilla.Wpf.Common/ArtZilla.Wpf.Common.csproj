@@ -11,9 +11,11 @@
     <LangVersion>latest</LangVersion>
     <IncludeSymbols>true</IncludeSymbols>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
-    <Version>1.0.0.6</Version>
-    <FileVersion>1.0.0.6</FileVersion>
-    <AssemblyVersion>1.0.0.6</AssemblyVersion>
+    
+		<Version>1.0.1-preview-1</Version>
+    <FileVersion>1.0.1-preview-1</FileVersion>
+    <AssemblyVersion>1.0.1-preview-1</AssemblyVersion>
+		
     <PackageReleaseNotes>Prepare for first release</PackageReleaseNotes>
     <Copyright>Copyright (c) 2016-2018 Artyom Fomin</Copyright>
     <PackageCopyright>Copyright (c) 2016-2018 Artyom Fomin</PackageCopyright>
@@ -83,6 +85,10 @@
 		<!-- Settings -->
     <None Update="Properties\Settings.settings" Generator="SettingsSingleFileGenerator" LastGenOutput="Settings.Designer.cs" />
     <Compile Update="Properties\Settings.Designer.cs" AutoGen="True" DependentUpon="Settings.settings" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
+    <Folder Include="ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
 </Project>
