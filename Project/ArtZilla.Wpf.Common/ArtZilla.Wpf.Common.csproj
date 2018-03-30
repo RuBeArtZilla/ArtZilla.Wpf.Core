@@ -13,8 +13,8 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     
 		<Version>1.0.1-preview-1</Version>
-    <FileVersion>1.0.1-preview-1</FileVersion>
-    <AssemblyVersion>1.0.1-preview-1</AssemblyVersion>
+    <FileVersion>1.0.1</FileVersion>
+    <AssemblyVersion>1.0.1</AssemblyVersion>
 		
     <PackageReleaseNotes>Prepare for first release</PackageReleaseNotes>
     <Copyright>Copyright (c) 2016-2018 Artyom Fomin</Copyright>
