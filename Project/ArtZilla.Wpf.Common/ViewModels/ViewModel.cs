@@ -9,30 +9,9 @@ using System.Runtime.CompilerServices;
 #endif
 
 namespace ArtZilla.Wpf {
-	public interface IDialogs {
-		void ShowMessage(string message, string title = null);
-		Task ShowMessageAsync(string message, string title = null);
-
-		bool AskQuestion(string question, string title = null);
-		Task<bool> AskQuestionAsync(string question, string title = null);
-
-		string ShowInput(string message, string title = null);
-		Task<string> ShowInputAsync(string message, string title = null);
-	}
-
-	public interface IViewModel: INotifyPropertyChanged {
-		IDialogs Dialogs { get; set; }
-	}
-
-	public interface IViewModel<TModel>: IViewModel {
-		TModel Model { get; }
-	}
-
-	public interface IView { }
-	public interface IView<TViewModel>: IView where TViewModel : IViewModel {
-		TViewModel ViewModel { get; set; }
-	}
-
+	/// <summary>
+	/// A base class for the View classes in the MVVM pattern.
+	/// </summary>
 	public abstract class ViewModel: ViewModelBase, IViewModel {
 		public IDialogs Dialogs { get; set; }
 
@@ -67,6 +46,10 @@ namespace ArtZilla.Wpf {
 		}
 	}
 
+	/// <summary>
+	/// A base class for the View classes with Model in the MVVM pattern.
+	/// </summary>
+	/// <typeparam name="TModel">Model</typeparam>
 	public abstract class ViewModel<TModel>: ViewModel, IViewModel<TModel> {
 		public TModel Model { get; }
 
@@ -109,16 +92,5 @@ namespace ArtZilla.Wpf {
 		protected virtual void AfterModelUpdated(string propertyName) {
 			// nothing to do
 		}
-	}
-
-	public abstract class DesignViewModel<TModel>: ViewModel<TModel> where TModel : new() {
-		protected DesignViewModel()
-			: base(IsInDesignModeStatic
-				? new TModel()
-				: throw new Exception("This ctor only for design mode")) { }
-
-		protected DesignViewModel(TModel model) : base(model) { }
-
-		protected DesignViewModel(TModel model, IDialogs coordinator) : base(model, coordinator) { }
 	}
 }

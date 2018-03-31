@@ -12,9 +12,9 @@
     <IncludeSymbols>true</IncludeSymbols>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     
-		<Version>1.0.1-preview-1</Version>
-    <FileVersion>1.0.1</FileVersion>
-    <AssemblyVersion>1.0.1</AssemblyVersion>
+		<Version>1.0.2</Version>
+    <FileVersion>1.0.2</FileVersion>
+    <AssemblyVersion>1.0.2</AssemblyVersion>
 		
     <PackageReleaseNotes>Prepare for first release</PackageReleaseNotes>
     <Copyright>Copyright (c) 2016-2018 Artyom Fomin</Copyright>
@@ -37,30 +37,44 @@
   </PropertyGroup>
 	
   <!-- Configurations -->
-  <PropertyGroup Condition="'$(Configuration)'=='Debug'">
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <DefineConstants>$(DefineConstants);DEBUG</DefineConstants>
   </PropertyGroup>
 	
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
   </PropertyGroup>
 	
-  <!-- References -->
-  <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="WindowsBase" />
-  </ItemGroup>
-	
-  <!-- PackageReferences -->
-  <ItemGroup>
-    <PackageReference Include="ArtZilla.Net.Core" Version="1.1.0.16" />
-    <PackageReference Include="MvvmLightLibs" Version="5.4.1" />
-    <PackageReference Include="System.ValueTuple" Version="4.4.0" />
-  </ItemGroup>
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net40' ">
+		<!-- Specific .Net 4.0 packages -->
+	</ItemGroup>
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'net40' ">
+		<DefineConstants>NET40;NETFULL</DefineConstants>
+	</PropertyGroup>
+
+	<ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
+		<!-- Specific .Net 4.5 packages -->
+	</ItemGroup>
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
+		<DefineConstants>NET45;NETFULL</DefineConstants>
+	</PropertyGroup>
+
+	<!-- References -->
+	<ItemGroup>
+		<Reference Include="PresentationCore" />
+		<Reference Include="PresentationFramework" />
+		<Reference Include="System.Xaml" />
+		<Reference Include="WindowsBase" />
+	</ItemGroup>
+
+	<!-- PackageReferences -->
+	<ItemGroup>
+		<PackageReference Include="ArtZilla.Net.Core" Version="1.1.0.16" />
+		<PackageReference Include="MvvmLightLibs" Version="5.4.1" />
+		<PackageReference Include="System.ValueTuple" Version="4.4.0" />
+	</ItemGroup>	
 	
   <!-- Files -->
   <ItemGroup>
@@ -85,10 +99,6 @@
 		<!-- Settings -->
     <None Update="Properties\Settings.settings" Generator="SettingsSingleFileGenerator" LastGenOutput="Settings.Designer.cs" />
     <Compile Update="Properties\Settings.Designer.cs" AutoGen="True" DependentUpon="Settings.settings" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
-    <Folder Include="ViewModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
 </Project>
