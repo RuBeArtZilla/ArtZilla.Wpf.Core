@@ -12,7 +12,7 @@
     <IncludeSymbols>true</IncludeSymbols>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     
-		<Version>1.0.3-pre002</Version>
+		<Version>1.0.3-pre003</Version>
     <AssemblyVersion>1.0.3</AssemblyVersion>
     
     <Copyright>Copyright (c) 2016-2018 Artyom Fomin</Copyright>
@@ -36,8 +36,10 @@
     <NeutralLanguage>en-US</NeutralLanguage>
     <RepositoryType>GitHub</RepositoryType>
 
-	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <IncludeSource>false</IncludeSource>
+	  <IncludeSymbols>false</IncludeSymbols>
+    
+	  <DefineConstants>NETFULL</DefineConstants>
   </PropertyGroup>
 	
   <!-- Configurations -->
@@ -46,8 +48,8 @@
   </PropertyGroup>
 	
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
-    <GenerateDocumentationFile>True</GenerateDocumentationFile>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <DefineConstants>$(DefineConstants);RELEASE</DefineConstants>
   </PropertyGroup>
 	
@@ -55,14 +57,14 @@
 		<!-- Specific .Net 4.0 packages -->
 	</ItemGroup>
 	<PropertyGroup Condition=" '$(TargetFramework)' == 'net40' ">
-		<DefineConstants>NET40;NETFULL</DefineConstants>
+		<DefineConstants>$(DefineConstants);NET40</DefineConstants>
 	</PropertyGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
 		<!-- Specific .Net 4.5 packages -->
 	</ItemGroup>
 	<PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
-		<DefineConstants>NET45;NETFULL</DefineConstants>
+		<DefineConstants>$(DefineConstants);NET45</DefineConstants>
 	</PropertyGroup>
 
 	<!-- References -->
