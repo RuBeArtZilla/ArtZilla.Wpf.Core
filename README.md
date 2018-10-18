@@ -1,2 +1,2 @@
-# ArtZilla.Wpf.Common
+# ArtZilla.Wpf.Core
 Usefull extensions for wpf
