@@ -12,11 +12,12 @@
     <IncludeSymbols>true</IncludeSymbols>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     
-		<Version>1.0.3-pre001</Version>
+		<Version>1.0.3-pre002</Version>
     <AssemblyVersion>1.0.3</AssemblyVersion>
     
     <Copyright>Copyright (c) 2016-2018 Artyom Fomin</Copyright>
     <PackageCopyright>Copyright (c) 2016-2018 Artyom Fomin</PackageCopyright>
+
     <AssemblyName>ArtZilla.Wpf.Core</AssemblyName>
     <AssemblyTitle>ArtZilla.Wpf.Core</AssemblyTitle>
     <PackageId>ArtZilla.Wpf.Core</PackageId>
@@ -25,16 +26,18 @@
 
     <Summary>Core WPF library</Summary>
     <Description>Core WPF library</Description>
-    
 	  <PackageTags>WPF</PackageTags>
+    <RepositoryUrl>https://github.com/RuBeArtZilla/ArtZilla.Wpf.Core</RepositoryUrl>
     <PackageIconUrl>https://artzilla.name/ArtZilla.Wpf.Core/Icon.png</PackageIconUrl>
     <PackageProjectUrl>https://artzilla.name/ArtZilla.Wpf.Core</PackageProjectUrl>
     <PackageLicenseUrl>https://artzilla.name/ArtZilla.Wpf.Core/License.txt</PackageLicenseUrl>
+    <Company>ArtZilla's development</Company>
     <Language>en-US</Language>
     <NeutralLanguage>en-US</NeutralLanguage>
     <RepositoryType>GitHub</RepositoryType>
-    <Company>ArtZilla's development</Company>
-    <RepositoryUrl>https://github.com/RuBeArtZilla/ArtZilla.Wpf.Core</RepositoryUrl>
+
+	  <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	  <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 	
   <!-- Configurations -->
