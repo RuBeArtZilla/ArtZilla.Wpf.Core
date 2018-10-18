@@ -88,9 +88,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ArtZilla.Wpf.Common\ArtZilla.Wpf.Common.csproj">
+    <ProjectReference Include="..\ArtZilla.Wpf.Core\ArtZilla.Wpf.Core.csproj">
       <Project>{3c683e69-e0c2-4a81-b090-ee30cb4a136e}</Project>
-      <Name>ArtZilla.Wpf.Common</Name>
+      <Name>ArtZilla.Wpf.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

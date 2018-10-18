@@ -9,9 +9,7 @@ using System.Runtime.CompilerServices;
 #endif
 
 namespace ArtZilla.Wpf {
-	/// <summary>
-	/// A base class for the View classes in the MVVM pattern.
-	/// </summary>
+	/// <summary> A base class for the View classes in the MVVM pattern. </summary>
 	public abstract class ViewModel: ViewModelBase, IViewModel {
 		public IDialogs Dialogs { get; set; }
 
@@ -46,9 +44,7 @@ namespace ArtZilla.Wpf {
 		}
 	}
 
-	/// <summary>
-	/// A base class for the View classes with Model in the MVVM pattern.
-	/// </summary>
+	/// <summary> A base class for the View classes with Model in the MVVM pattern. </summary>
 	/// <typeparam name="TModel">Model</typeparam>
 	public abstract class ViewModel<TModel>: ViewModel, IViewModel<TModel> {
 		public TModel Model { get; }
