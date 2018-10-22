@@ -93,18 +93,29 @@ namespace ArtZilla.Wpf {
 		}
 	}
 
-	public abstract class PageWindowViewModel : ViewModel, IPageHostViewModel {
+	public abstract class PageHostViewModel : ViewModel, IPageHostViewModel {
 		public abstract string Url { get; }
-		public abstract IPageView View { get; protected set; }
-		public abstract IPageViewModel ViewModel { get; protected set; }
+		public abstract IPageView View { get; }
+		public abstract IPageViewModel ViewModel { get; }
 
 		public abstract void ChangePage(IPageViewModel newPage);
 		public abstract void ChangePage(Type pvmType);
 	}
 
-	public abstract class PageWindowViewModel<TPages>
-		: PageWindowViewModel, IPageHostViewModel<TPages> where TPages : struct, Enum {
-		public abstract TPages? Page { get; }
+	public abstract class PageHostViewModel<TPages>
+		: PageHostViewModel, IPageHostViewModel<TPages> where TPages : struct, Enum {
+		public override string Url => _page.ToString();
+		public virtual TPages? Page => _page;
+		public override IPageView View => _view;
+		public override IPageViewModel ViewModel => _viewModel;
+
+		public override void ChangePage(IPageViewModel newPage) {
+			throw new NotImplementedException();
+		}
+
+		public override void ChangePage(Type pvmType) {
+			throw new NotImplementedException();
+		}
 
 		public virtual void ChangePage(TPages page) {
 			var (vm, view) = CreateByPage(page);
