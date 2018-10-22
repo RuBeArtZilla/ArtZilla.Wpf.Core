@@ -132,15 +132,17 @@ namespace ArtZilla.Wpf {
 			var attrView = member[0].GetCustomAttributes(typeof(ViewAttribute), false).FirstOrDefault();
 
 			var vmType = (attrVM as ViewModelAttribute)?.ViewModelType
+									 ?? Assembly.GetAssembly(typeof(TPages)).GetType(page + "PageVM", false)
 			             ?? throw new Exception("Can't find view model type for " + page);
 
 			var viewType = (attrView as ViewAttribute)?.ViewType
+									 ?? Assembly.GetAssembly(typeof(TPages)).GetType(page + "Page", false)
 			             ?? throw new Exception("Can't find view type for " + page);
 
-			if (typeof(IPageViewModel).IsAssignableFrom(vmType))
+			if (!typeof(IPageViewModel).IsAssignableFrom(vmType))
 				throw new Exception($"{vmType} doesn't implement {typeof(IPageViewModel)}");
 
-			if (typeof(IPageView).IsAssignableFrom(viewType))
+			if (!typeof(IPageView).IsAssignableFrom(viewType))
 				throw new Exception($"{viewType} doesn't implement {typeof(IPageView)}");
 
 			var vm = (IPageViewModel) Activator.CreateInstance(vmType);
