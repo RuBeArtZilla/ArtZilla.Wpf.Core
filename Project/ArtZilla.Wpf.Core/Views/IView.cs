@@ -25,4 +25,15 @@ namespace ArtZilla.Wpf {
 	public interface IPageHostView<TPageHostViewModel> : IPageHostView, IView<TPageHostViewModel> where TPageHostViewModel : IPageHostViewModel {
 
 	}
+
+	[AttributeUsage(AttributeTargets.All, Inherited = true, AllowMultiple = true)]
+	public sealed class ViewAttribute : Attribute {
+		public Type ViewType { get; set; }
+
+		public ViewAttribute(Type viewType) {
+			if (!typeof(IView).IsAssignableFrom(viewType))
+				throw new ArgumentException($"{viewType} not implement {typeof(IView)}");
+			ViewType = viewType;
+		}
+	}
 }

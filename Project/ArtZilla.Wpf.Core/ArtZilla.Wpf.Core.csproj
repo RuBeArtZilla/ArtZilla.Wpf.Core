@@ -12,8 +12,8 @@
     <IncludeSymbols>true</IncludeSymbols>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     
-		<Version>1.0.3</Version>
-    <AssemblyVersion>1.0.3</AssemblyVersion>
+		<Version>1.0.4-rc001</Version>
+    <AssemblyVersion>1.0.4</AssemblyVersion>
     
     <Copyright>Copyright (c) 2016-2018 Artyom Fomin</Copyright>
     <PackageCopyright>Copyright (c) 2016-2018 Artyom Fomin</PackageCopyright>

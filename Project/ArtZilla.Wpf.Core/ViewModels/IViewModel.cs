@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 
 namespace ArtZilla.Wpf {
 	/// <summary> A base interface for the ViewModel classes in the MVVM pattern. </summary>
@@ -14,7 +15,20 @@ namespace ArtZilla.Wpf {
 		TModel Model { get; }
 	}
 
+	[AttributeUsage(AttributeTargets.All, Inherited = true, AllowMultiple = true)]
+	public sealed class ViewModelAttribute : Attribute {
+		public Type ViewModelType { get; }
+
+		public ViewModelAttribute(Type viewModelType) {
+			if (!typeof(IViewModel).IsAssignableFrom(viewModelType))
+				throw new ArgumentException($"{viewModelType} not implement {typeof(IViewModel)}");
+			ViewModelType = viewModelType;
+		}
+	}
+
   public interface IPageViewModel : IViewModel {
+	  IPageHostViewModel Host { get; set; }
+
 		void BeforeShow();
 		void AfterShow();
 		void BeforeHide();
@@ -26,11 +40,16 @@ namespace ArtZilla.Wpf {
 	}
 
 	public interface IPageHostViewModel : IViewModel {
+		string Url { get; } // reserved
+		IPageView View{ get; }
+		IPageViewModel ViewModel { get; }
+
 		void ChangePage(IPageViewModel newPage);
 		void ChangePage(Type pvmType);
 	}
 
-	public interface IPageHostViewModel<in TPageViewModel> : IPageHostViewModel where TPageViewModel : IPageViewModel {
-		void ChangePage(TPageViewModel newPage);
+	public interface IPageHostViewModel<TPages> : IPageHostViewModel where TPages : struct, Enum {
+		TPages? Page { get; }
+		void ChangePage(TPages page);
 	}
 }
