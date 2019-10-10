@@ -1,23 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk" ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
   <PropertyGroup>
-		<TargetFrameworks>net40;net45</TargetFrameworks>
-    <LanguageTargets>$(MSBuildExtensionsPath)\$(VisualStudioVersion)\Bin\Microsoft.CSharp.targets</LanguageTargets>
-    <ProjectGuid>{3C683E69-E0C2-4A81-B090-EE30CB4A136E}</ProjectGuid>
-    <RuntimeIdentifiers>win7-x86;win7-x64</RuntimeIdentifiers>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+	  <TargetFrameworks>netcoreapp3.0;net40;net45</TargetFrameworks>
     <OutputType>Library</OutputType>
+	  <UseWPF>true</UseWPF>
     <WarningLevel>4</WarningLevel>
-    <LangVersion>latest</LangVersion>
-    <IncludeSymbols>true</IncludeSymbols>
-    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>8</LangVersion>
     
-		<Version>1.0.4-rc004</Version>
+		<Version>1.0.4-rc006</Version>
     <AssemblyVersion>1.0.4</AssemblyVersion>
     
-    <Copyright>Copyright (c) 2016-2018 Artyom Fomin</Copyright>
-    <PackageCopyright>Copyright (c) 2016-2018 Artyom Fomin</PackageCopyright>
-
+    <Copyright>Copyright (c) 2016-2019 Artyom Fomin</Copyright>
     <AssemblyName>ArtZilla.Wpf.Core</AssemblyName>
     <AssemblyTitle>ArtZilla.Wpf.Core</AssemblyTitle>
     <PackageId>ArtZilla.Wpf.Core</PackageId>
@@ -27,19 +19,16 @@
     <Summary>Core WPF library</Summary>
     <Description>Core WPF library</Description>
 	  <PackageTags>WPF</PackageTags>
+    <PackageIcon>Icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/RuBeArtZilla/ArtZilla.Wpf.Core</RepositoryUrl>
-    <PackageIconUrl>https://artzilla.name/ArtZilla.Wpf.Core/Icon.png</PackageIconUrl>
     <PackageProjectUrl>https://artzilla.name/ArtZilla.Wpf.Core</PackageProjectUrl>
-    <PackageLicenseUrl>https://artzilla.name/ArtZilla.Wpf.Core/License.txt</PackageLicenseUrl>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <RequireLicenseAcceptance>false</RequireLicenseAcceptance>
     <Company>ArtZilla's development</Company>
     <Language>en-US</Language>
     <NeutralLanguage>en-US</NeutralLanguage>
     <RepositoryType>GitHub</RepositoryType>
-
-	  <IncludeSource>false</IncludeSource>
-	  <IncludeSymbols>false</IncludeSymbols>
-    
-	  <DefineConstants>NETFULL</DefineConstants>
+	  <DefineConstants></DefineConstants>
   </PropertyGroup>
 	
   <!-- Configurations -->
@@ -54,57 +43,43 @@
   </PropertyGroup>
 	
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net40' ">
-		<!-- Specific .Net 4.0 packages -->
+		<!-- Specific .NET 4.0 packages -->
+		<Reference Include="PresentationCore" />
+		<Reference Include="PresentationFramework" />
+		<Reference Include="System.Xaml" />
+		<Reference Include="WindowsBase" />
 	</ItemGroup>
 	<PropertyGroup Condition=" '$(TargetFramework)' == 'net40' ">
 		<DefineConstants>$(DefineConstants);NET40</DefineConstants>
 	</PropertyGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
-		<!-- Specific .Net 4.5 packages -->
-	</ItemGroup>
-	<PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
-		<DefineConstants>$(DefineConstants);NET45</DefineConstants>
-	</PropertyGroup>
-
-	<!-- References -->
-	<ItemGroup>
+		<!-- Specific .NET 4.5 packages -->
 		<Reference Include="PresentationCore" />
 		<Reference Include="PresentationFramework" />
 		<Reference Include="System.Xaml" />
 		<Reference Include="WindowsBase" />
 	</ItemGroup>
+	<PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
+		<DefineConstants>$(DefineConstants);NET45</DefineConstants>
+	</PropertyGroup>
+
+  <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.0' ">
+	  <!-- Specific .NET Core packages -->
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.0' ">
+	  <DefineConstants>$(DefineConstants);NETCORE;NETCORE3_0</DefineConstants>
+  </PropertyGroup>
 
 	<!-- PackageReferences -->
 	<ItemGroup>
-		<PackageReference Include="ArtZilla.Net.Core" Version="1.1.0.16" />
+		<PackageReference Include="ArtZilla.Net.Core" Version="1.1.3" />
 		<PackageReference Include="MvvmLightLibs" Version="5.4.1" />
-		<PackageReference Include="System.ValueTuple" Version="4.4.0" />
+		<PackageReference Include="System.ValueTuple" Version="4.5.0" />
 	</ItemGroup>	
-	
-  <!-- Files -->
+
   <ItemGroup>
-    <!-- App.xaml -->
-    <!--
-		<ApplicationDefinition Include="App.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </ApplicationDefinition>
-		-->
-    <!-- XAML elements -->
-    <Page Include="**\*.xaml" Exclude="App.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </Page>
-    <Compile Update="**\*.xaml.cs" SubType="Code" DependentUpon="%(Filename)" />
-    
-		<!-- Resources -->
-    <EmbeddedResource Update="Properties\Resources.resx" Generator="ResXFileCodeGenerator" LastGenOutput="Resources.Designer.cs" />
-    <Compile Update="Properties\Resources.Designer.cs" AutoGen="True" DependentUpon="Resources.resx" DesignTime="True" />
-    
-		<!-- Settings -->
-    <None Update="Properties\Settings.settings" Generator="SettingsSingleFileGenerator" LastGenOutput="Settings.Designer.cs" />
-    <Compile Update="Properties\Settings.Designer.cs" AutoGen="True" DependentUpon="Settings.settings" />
+	  <None Include="Icon.png" Pack="true" PackagePath="\" />
   </ItemGroup>
-  <Import Project="$(MSBuildSDKExtrasTargets)" Condition="Exists('$(MSBuildSDKExtrasTargets)')" />
+	
 </Project>

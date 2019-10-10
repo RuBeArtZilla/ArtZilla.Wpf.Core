@@ -42,7 +42,7 @@ namespace ArtZilla.Wpf {
 				return false;
 
 			storage = value;
-			RaisePropertyChanged(propertyName);
+			RaisePropertyChanged(propertyName);	
 			return true;
 		}
 	}
@@ -100,6 +100,14 @@ namespace ArtZilla.Wpf {
 
 		public abstract void ChangePage(IPageViewModel newPage);
 		public abstract void ChangePage(Type pvmType);
+
+		protected virtual void BeforePageChanged() {
+			//
+		}
+
+		protected virtual void AfterPageChanged() {
+			// 
+		}
 	}
 
 	public abstract class PageHostViewModel<TPages>
@@ -126,7 +134,7 @@ namespace ArtZilla.Wpf {
 			}
 		}
 
-		private (IPageViewModel vm, IPageView view) CreateByPage(TPages page) {
+		protected virtual (IPageViewModel vm, IPageView view) CreateByPage(TPages page) {
 			var member = typeof(TPages).GetMember(page.ToString());
 			var attrVM = member[0].GetCustomAttributes(typeof(ViewModelAttribute), false).FirstOrDefault();
 			var attrView = member[0].GetCustomAttributes(typeof(ViewAttribute), false).FirstOrDefault();
@@ -204,7 +212,8 @@ namespace ArtZilla.Wpf {
 
 		public bool IsVisible { get; private set; }
 
-		public PageViewModel() => Debug.Print($"Call {GetType().Name}::{nameof(PageViewModel)}()");
+		public PageViewModel()
+			=> Debug.Print($"Call {GetType().Name}::{nameof(PageViewModel)}()");
 
 		~PageViewModel()
 			=> Debug.Print("Finalized " + GetPageDebugCode());
@@ -247,5 +256,4 @@ namespace ArtZilla.Wpf {
 
 		protected PageViewModel(TModel model, IDialogs dialogs) : this(model) => Dialogs = dialogs;
 	}
-
 }

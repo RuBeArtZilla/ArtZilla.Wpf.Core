@@ -44,8 +44,8 @@ namespace ArtZilla.Wpf {
 		IPageView View{ get; }
 		IPageViewModel ViewModel { get; }
 
-		void ChangePage(IPageViewModel newPage);
 		void ChangePage(Type pvmType);
+		void ChangePage(IPageViewModel newPage);
 	}
 
 	public interface IPageHostViewModel<TPages> : IPageHostViewModel where TPages : struct, Enum {
