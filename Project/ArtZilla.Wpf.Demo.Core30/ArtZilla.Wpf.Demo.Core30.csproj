@@ -1,13 +1,33 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.0</TargetFramework>
+		<OutputType>WinExe</OutputType>
+		<UseWPF>true</UseWPF>
+		<LangVersion>8</LangVersion>
+		<UICulture>en-US</UICulture>
+		<RootNamespace>ArtZilla.Wpf.Demo</RootNamespace>
+	</PropertyGroup>
 
-  <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
-    <UseWPF>true</UseWPF>
-  </PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="ArtZilla.Net.Core" Version="1.1.5" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\ArtZilla.Wpf.Core\ArtZilla.Wpf.Core.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\ArtZilla.Wpf.Core\ArtZilla.Wpf.Core.csproj" />
+	</ItemGroup>
 
+	<ItemGroup>
+		<Folder Include="Models\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Properties\Resources.resx" Generator="PublicResXFileCodeGenerator" LastGenOutput="Resources.Designer.cs" />
+		<Compile Update="Properties\Resources.Designer.cs" DependentUpon="Resources.resx" DesignTime="True" AutoGen="True" />
+	  <None Include="ResourceEnum.tt" LastGenOutput="ResourceEnum.cs" Generator="TextTemplatingFileGenerator" />
+		<Compile Update="ResourceEnum.cs" DependentUpon="ResourceEnum.tt" DesignTime="True" AutoGen="True" />
+	</ItemGroup>
+	
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+	  <Exec Command="&quot;$(DevEnvDir)TextTransform.exe&quot; -out &quot;$(ProjectDir)ResourceEnum.cs&quot; &quot;$(ProjectDir)ResourceEnum.tt&quot;" />
+	</Target>
 </Project>

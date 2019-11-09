@@ -6,7 +6,7 @@
     <WarningLevel>4</WarningLevel>
     <LangVersion>8</LangVersion>
     
-		<Version>1.0.4-rc006</Version>
+		<Version>1.0.4-rc008</Version>
     <AssemblyVersion>1.0.4</AssemblyVersion>
     
     <Copyright>Copyright (c) 2016-2019 Artyom Fomin</Copyright>
@@ -14,8 +14,7 @@
     <AssemblyTitle>ArtZilla.Wpf.Core</AssemblyTitle>
     <PackageId>ArtZilla.Wpf.Core</PackageId>
     <RootNamespace>ArtZilla.Wpf</RootNamespace>
-    <PackageReleaseNotes>Test CI</PackageReleaseNotes>
-
+    
     <Summary>Core WPF library</Summary>
     <Description>Core WPF library</Description>
 	  <PackageTags>WPF</PackageTags>
@@ -44,24 +43,17 @@
 	
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net40' ">
 		<!-- Specific .NET 4.0 packages -->
-		<Reference Include="PresentationCore" />
-		<Reference Include="PresentationFramework" />
-		<Reference Include="System.Xaml" />
-		<Reference Include="WindowsBase" />
+		<PackageReference Include="ReadOnlyCollectionExtensions" Version="1.3.0" />
 	</ItemGroup>
 	<PropertyGroup Condition=" '$(TargetFramework)' == 'net40' ">
-		<DefineConstants>$(DefineConstants);NET40</DefineConstants>
+		<DefineConstants>$(DefineConstants);NET40;NETFULL</DefineConstants>
 	</PropertyGroup>
 
 	<ItemGroup Condition=" '$(TargetFramework)' == 'net45' ">
 		<!-- Specific .NET 4.5 packages -->
-		<Reference Include="PresentationCore" />
-		<Reference Include="PresentationFramework" />
-		<Reference Include="System.Xaml" />
-		<Reference Include="WindowsBase" />
 	</ItemGroup>
 	<PropertyGroup Condition=" '$(TargetFramework)' == 'net45' ">
-		<DefineConstants>$(DefineConstants);NET45</DefineConstants>
+		<DefineConstants>$(DefineConstants);NET45;NETFULL</DefineConstants>
 	</PropertyGroup>
 
   <ItemGroup Condition=" '$(TargetFramework)' == 'netcoreapp3.0' ">
@@ -71,9 +63,9 @@
 	  <DefineConstants>$(DefineConstants);NETCORE;NETCORE3_0</DefineConstants>
   </PropertyGroup>
 
-	<!-- PackageReferences -->
+	<!-- Package references -->
 	<ItemGroup>
-		<PackageReference Include="ArtZilla.Net.Core" Version="1.1.3" />
+		<PackageReference Include="ArtZilla.Net.Core" Version="1.1.5" />
 		<PackageReference Include="MvvmLightLibs" Version="5.4.1" />
 		<PackageReference Include="System.ValueTuple" Version="4.5.0" />
 	</ItemGroup>	

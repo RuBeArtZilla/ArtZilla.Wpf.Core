@@ -1,0 +1,16 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ output extension=".cs" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Windows.Forms" #>
+using System.ComponentModel;
+
+namespace ArtZilla.Wpf.Demo {
+	public enum LocStrings {<#
+		Write(Environment.NewLine);
+		using var reader = new System.Resources.ResXResourceReader(this.Host.ResolvePath("Properties\\Resources.resx"));
+		foreach (System.Collections.DictionaryEntry item in reader) {
+			Write($"\t\t[Description(\"{item.Value}\")]" + Environment.NewLine);
+			Write("\t\t" + item.Key + "," + Environment.NewLine);
+		}#>
+	}
+}

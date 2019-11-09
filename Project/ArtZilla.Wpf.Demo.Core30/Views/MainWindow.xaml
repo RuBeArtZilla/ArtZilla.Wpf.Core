@@ -1,0 +1,19 @@
+﻿<Window x:Class="ArtZilla.Wpf.Demo.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:demo="clr-namespace:ArtZilla.Wpf.Demo"
+        xmlns:l="clr-namespace:ArtZilla.Wpf.Demo.L"
+        mc:Ignorable="d"
+        Title="{l:l WindowTitle}" Height="450" Width="800">
+	<Grid>
+		<TabControl>
+			<TabItem Header="{l:l Language}">
+				<StackPanel >
+					<Label Content=""/>
+				</StackPanel>
+			</TabItem>
+		</TabControl>
+	</Grid>
+</Window>

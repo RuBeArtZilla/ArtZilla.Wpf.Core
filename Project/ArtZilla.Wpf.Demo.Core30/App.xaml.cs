@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
@@ -6,10 +7,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace ArtZilla.Wpf.Demo.Core30 {
-	/// <summary>
-	/// Interaction logic for App.xaml
-	/// </summary>
+namespace ArtZilla.Wpf.Demo {
+	/// <summary> Interaction logic for App.xaml </summary>
 	public partial class App : Application {
+		static App() {
+			LocalizationManager.Instance.LocalizationProvider = new ResxLocalizationProvider();
+		}
 	}
 }

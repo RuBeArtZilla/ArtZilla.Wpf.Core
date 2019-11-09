@@ -1,11 +1,11 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Diagnostics;
 
 namespace ArtZilla.Wpf {
 	/// <summary> A base interface for the ViewModel classes in the MVVM pattern. </summary>
 	public interface IViewModel: INotifyPropertyChanged {
 		IDialogs Dialogs { get; set; }
+
 		bool IsInDesignMode { get; }
 	}
 
@@ -27,17 +27,19 @@ namespace ArtZilla.Wpf {
 	}
 
   public interface IPageViewModel : IViewModel {
+	  /// <summary> Host view model for this instance </summary>
 	  IPageHostViewModel Host { get; set; }
 
 		void BeforeShow();
+
 		void AfterShow();
+		
 		void BeforeHide();
+		
 		void AfterHide();
 	}
 
-	public interface IPageViewModel<out TModel> : IPageViewModel, IViewModel<TModel> {
-
-	}
+	public interface IPageViewModel<out TModel> : IPageViewModel, IViewModel<TModel> { }
 
 	public interface IPageHostViewModel : IViewModel {
 		string Url { get; } // reserved
