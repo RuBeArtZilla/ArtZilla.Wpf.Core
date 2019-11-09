@@ -27,7 +27,7 @@
 		<Compile Update="ResourceEnum.cs" DependentUpon="ResourceEnum.tt" DesignTime="True" AutoGen="True" />
 	</ItemGroup>
 	
-	<Target Name="PreBuild" BeforeTargets="PreBuildEvent">
+	<Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition=" '$(Configuration)' == 'Debug' ">
 	  <Exec Command="&quot;$(DevEnvDir)TextTransform.exe&quot; -out &quot;$(ProjectDir)ResourceEnum.cs&quot; &quot;$(ProjectDir)ResourceEnum.tt&quot;" />
 	</Target>
 </Project>
